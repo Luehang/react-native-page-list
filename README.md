@@ -4,4 +4,4 @@
 <br/>
 <br/>
 
-> An easy and simple to use React Native component that renders swipable performant pages with intelligent scroll/swipe detection to cushion rough guestures.
+> An easy and simple to use React Native component that renders swipable performant pages with intelligent scroll/swipe detection to cushion rough guestures. Supporting both iOS and Android. Free and made possible along with costly maintenance and updates by [Lue Hang](https://www.facebook.com/lue.hang) (the author).

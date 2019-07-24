@@ -22,7 +22,7 @@
     "Lue Hang",
     "luehang"
   ],
-  "homepage": "https://github.com/Luehang/react-native-page-list",
+  "homepage": "https://luehangs.site/lue_hang/projects/react-native-page-list",
   "author": {
     "name": "Lue Hang",
     "email": "lue_hang@hotmail.com",
@@ -47,8 +47,8 @@
   ],
   "dependencies": {
     "prop-types": "^15.6.2",
-    "react-native-easy-guesture-responder": "^1.0.0",
-    "react-native-scrolling": "^1.0.0"
+    "react-native-easy-guesture-responder": "^1.1.2",
+    "react-native-scrolling": "^1.0.2"
   },
   "peerDependencies": {
     "react": "*",

@@ -26,6 +26,8 @@ export default class PageList extends PureComponent {
             ? ViewPropTypes.style
             : View.propTypes.style,
         scrollEnabled: PropTypes.bool,
+        renderItem: PropTypes.func,
+        data: PropTypes.array,
         renderPage: PropTypes.func,
         pageDataArray: PropTypes.array,
         removeClippedSubviews: PropTypes.bool,
@@ -41,6 +43,7 @@ export default class PageList extends PureComponent {
         initialNumToRender: 3,
         pageMargin: 0,
         scrollEnabled: true,
+        data: [],
         pageDataArray: [],
         sensitiveScroll: true,
         removeClippedSubviews: true,
@@ -137,6 +140,9 @@ export default class PageList extends PureComponent {
     }
 
     componentDidUpdate (prevProps) {
+        const pageDataArray = this.props.pageDataArray.length > 0
+            ? this.props.pageDataArray
+            : this.props.data;
         if (this.layoutChanged) {
             this.layoutChanged = false;
             if (typeof this.currentPage === "number") {
@@ -192,7 +198,10 @@ export default class PageList extends PureComponent {
     }
 
     settlePage (vx) {
-        const { pageDataArray, sensitiveScroll } = this.props;
+        const { sensitiveScroll } = this.props;
+        const pageDataArray = this.props.pageDataArray.length > 0
+            ? this.props.pageDataArray
+            : this.props.data;
 
         if (sensitiveScroll && vx < -MIN_FLING_VELOCITY) {
             if (this.currentPage < pageDataArray.length - 1) {
@@ -223,7 +232,10 @@ export default class PageList extends PureComponent {
     }
 
     getScrollOffsetOfPage (page) {
-        return this.getItemLayout(this.props.pageDataArray, page).offset;
+        const pageDataArray = this.props.pageDataArray.length > 0
+            ? this.props.pageDataArray
+            : this.props.data;
+        return this.getItemLayout(pageDataArray, page).offset;
     }
 
     flingToPage (page, velocityX) {
@@ -286,8 +298,11 @@ export default class PageList extends PureComponent {
     }
 
     validPage (page) {
+        const pageDataArray = this.props.pageDataArray.length > 0
+            ? this.props.pageDataArray
+            : this.props.data;
         page = Math.min(
-            this.props.pageDataArray.length - 1,
+            pageDataArray.length - 1,
             page
         );
         page = Math.max(0, page);
@@ -320,7 +335,9 @@ export default class PageList extends PureComponent {
     renderRow ({ item, index }) {
         // eslint-disable-next-line no-shadow
         const { width, height } = this.state;
-        let page = this.props.renderPage(item, index);
+        let page = this.props.renderPage
+            ? this.props.renderPage(item, index)
+            : this.props.renderItem({ item, index });
 
         const layout = {
             width,
@@ -356,9 +373,12 @@ export default class PageList extends PureComponent {
         // eslint-disable-next-line no-shadow
         const { width, height } = this.state;
         const {
-            pageDataArray, scrollEnabled,
+            scrollEnabled,
             style, scrollViewStyle
         } = this.props;
+        const pageDataArray = this.props.pageDataArray.length > 0
+            ? this.props.pageDataArray
+            : this.props.data;
 
         if (width && height) {
             let list = pageDataArray;

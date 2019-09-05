@@ -149,10 +149,10 @@ export default class PageList extends PureComponent {
                 this.scrollToPage(this.currentPage, true);
             }
         } else if (
-            this.currentPage + 1 >= this.props.pageDataArray.length &&
-            this.props.pageDataArray.length !== prevProps.pageDataArray.length
+            this.currentPage + 1 >= pageDataArray.length &&
+            pageDataArray.length !== prevProps.pageDataArray.length
         ) {
-            this.scrollToPage(this.props.pageDataArray.length, true);
+            this.scrollToPage(pageDataArray.length, true);
         }
     }
 

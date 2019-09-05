@@ -12,10 +12,18 @@ An easy and simple to use React Native component that renders swipable performan
 
 ---
 <br/>
+
+<h1 align="center">
+    <a href="https://www.luehangs.site/lue_hang/projects/react-native-smart-page">
+        <img src="https://www.luehangs.site/videos/react-native-smart-page-demo.gif" alt="react-native-smart-page"/>
+    </a>
+</h1>
+
+<br/>
 <br/>
 
 # :link: Quick Links
-- Documentation coming soon!
+- [Documentation](https://www.luehangs.site/lue_hang/projects/react-native-page-list)
 - [Mobile Kit Marketplace](https://luehangs.site/marketplace/mobile-development)
 - [React Native Development How To Dos](https://luehangs.site/blogs/react-native-development)
 - [Chat](https://luehangs.site)
@@ -40,13 +48,60 @@ $ yarn add react-native-page-list
 ```
 
 <br/>
+<br/>
+<br/>
+
+---
+<br/>
+<br/>
+<br/>
+
+## :tada: Usage Example
+
+Add an ``import`` to the top of the file.  At minimal, place `array` data into the `data` prop and render the pages using the `renderItem` prop.
+
+> If you like [`react-native-page-list`](https://github.com/Luehang/react-native-page-list), please be sure to give it a star at [GitHub](https://github.com/Luehang/react-native-page-list). Thanks.
+
+```javascript
+import PageList from "react-native-page-list";
+import { View, Image } from "react-native";
+
+//...
+render() {
+    return (
+        <PageList
+            data={[
+                { uri: "https://luehangs.site/pic-chat-app-images/pexels-photo-853168.jpeg" },
+                { uri: "https://luehangs.site/pic-chat-app-images/animals-avian-beach-760984.jpg" },
+                { uri: "https://luehangs.site/pic-chat-app-images/beautiful-beautiful-woman-beauty-9763.jpg" },
+                { uri: "https://luehangs.site/pic-chat-app-images/photo-755745.jpeg" },
+                { uri: "https://luehangs.site/pic-chat-app-images/photo-799443.jpeg" }
+            ]}
+            renderItem={({ item, index }) => {
+                return (
+                    <View key={index} style={{flex: 1, backgroundColor: "#000"}}>
+                        <Image
+                            source={{ uri: item.uri }}
+                            style={{flex: 1}}
+                            resizeMode="contain"
+                        />
+                    </View>
+                );
+            }}
+        />
+    );
+}
+//...
+```
+
+<br/>
 
 ---
 <br/>
 
 # :book: Full Documentation
 
-Documentation coming soon!
+Learn more about the installation and how to use this package in the updated [documentation](https://www.luehangs.site/lue_hang/projects/react-native-page-list) page.
 
 <br/>
 <br/>

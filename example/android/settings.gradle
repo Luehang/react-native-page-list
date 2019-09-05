@@ -1,0 +1,3 @@
+rootProject.name = 'ReactNativePageListExample'
+
+include ':app'

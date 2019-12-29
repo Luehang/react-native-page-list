@@ -12,8 +12,6 @@ import { createResponder } from "react-native-easy-guesture-responder";
 
 const MIN_FLING_VELOCITY = 0.5;
 
-// Dimensions are only used initially.
-// onLayout should handle orientation swap.
 const { width, height } = Dimensions.get("window");
 
 export default class PageList extends PureComponent {
@@ -69,6 +67,14 @@ export default class PageList extends PureComponent {
         this.getItemLayout = this.getItemLayout.bind(this);
 
         this.scroller = this.createScrolling();
+
+        this.gestureResponder = createResponder({
+            onStartShouldSetResponder: (evt, gestureState) => true,
+            onResponderGrant: this.onResponderGrant,
+            onResponderMove: this.onResponderMove,
+            onResponderRelease: this.onResponderRelease,
+            onResponderTerminate: this.onResponderRelease
+        });
     }
 
     createScrolling () {
@@ -101,16 +107,6 @@ export default class PageList extends PureComponent {
                     position, offset, fraction
                 });
             }
-        });
-    }
-
-    componentWillMount () {
-        this.gestureResponder = createResponder({
-            onStartShouldSetResponder: (evt, gestureState) => true,
-            onResponderGrant: this.onResponderGrant,
-            onResponderMove: this.onResponderMove,
-            onResponderRelease: this.onResponderRelease,
-            onResponderTerminate: this.onResponderRelease
         });
     }
 

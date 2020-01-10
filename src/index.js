@@ -328,7 +328,7 @@ export default class PageList extends PureComponent {
         if (item.key) {
             return item.key.toString();
         }
-            return index.toString();  
+        return index.toString();
     }
 
     renderRow ({ item, index }) {

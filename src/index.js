@@ -38,7 +38,7 @@ export default class PageList extends PureComponent {
 
     static defaultProps = {
         initialPage: 0,
-        initialNumToRender: 3,
+        initialNumToRender: 7,
         pageMargin: 0,
         scrollEnabled: true,
         data: [],

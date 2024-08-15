@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import {
     View,
     FlatList,
-    ViewPropTypes,
     InteractionManager,
     Dimensions
 } from "react-native";
@@ -20,9 +19,10 @@ export default class PageList extends PureComponent {
         initialPage: PropTypes.number,
         initialNumToRender: PropTypes.number,
         pageMargin: PropTypes.number,
-        scrollViewStyle: ViewPropTypes
-            ? ViewPropTypes.style
-            : View.propTypes.style,
+        scrollViewStyle: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.array,
+        ]),
         scrollEnabled: PropTypes.bool,
         renderItem: PropTypes.func,
         data: PropTypes.array,
